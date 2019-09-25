@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import MoviesList from 'components/MoviesList'
 
 const Home = () => {
-  const [trendingMovies, setTrendingMovies] = useState({
+  const [discoveryMovies, setDiscoveryMovies] = useState({
     loading: true,
     error: null,
     list: []
@@ -13,16 +13,16 @@ const Home = () => {
     const fetchTrending = async () => {
       try {
         const response = await fetch(
-          `${process.env.REACT_APP_MOVIE_DB_URL}trending/movie/week?api_key=${process.env.REACT_APP_MOVIE_DB_KEY}`
+          `${process.env.REACT_APP_MOVIE_DB_URL}discover/movie?api_key=${process.env.REACT_APP_MOVIE_DB_KEY}&sort_by=popularity.desc`
         )
         const body = await response.json()
-        setTrendingMovies({
+        setDiscoveryMovies({
           loading: false,
           error: null,
           list: body.results
         })
       } catch (error) {
-        setTrendingMovies({
+        setDiscoveryMovies({
           list: [],
           loading: false,
           error: 'Opps! osomething went wrong'
@@ -32,14 +32,14 @@ const Home = () => {
     fetchTrending()
   }, [])
 
-  if (trendingMovies.loading) {
+  if (discoveryMovies.loading) {
     return <div>loading...</div>
   }
-  if (trendingMovies.error) {
+  if (discoveryMovies.error) {
     return 'ops something went wrong'
   }
   return (
-    <MoviesList movies={trendingMovies.list} />
+    <MoviesList movies={discoveryMovies.list} />
   )
 }
 

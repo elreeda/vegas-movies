@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
 
+import favorites from './favoriteMovies'
+
 const rootReducer = combineReducers({
-  movies: () => ({}),
-  trending: () => ({}),
   watchList: () => ({}),
-  favorites: () => ({})
+  favorites
 })
 
 export default rootReducer

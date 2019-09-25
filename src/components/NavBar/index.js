@@ -8,7 +8,7 @@ const NavBar = () => {
   return (
     <StyleBase>
       <Browse>
-        <NavLink exact activeClassName="selected-tab" to="/">Trending</NavLink>
+        <NavLink exact activeClassName="selected-tab" to="/">Home</NavLink>
         <NavLink activeClassName="selected-tab" to="/discovery">Discovery</NavLink>
         <NavLink activeClassName="selected-tab" to="/watchlist">My Watchlist</NavLink>
         <NavLink activeClassName="selected-tab" to="/favorites">Favorites</NavLink>
