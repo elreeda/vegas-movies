@@ -1,43 +1,29 @@
 import * as types from './types'
 
-export const getDiscoveryMovies = () => {
-  return async (dispatch) => {
-    dispatch({
-      type: types.GET_DISCOVERY_MOVIES
-    })
-    try {
-      const response = await fetch(`${process.env.REACT_APP_MOVIE_DB_URL}discover/movie?api_key=${process.env.REACT_APP_MOVIE_DB_KEY}&sort_by=popularity.desc`)
-      const body = await response.json()
-      dispatch({
-        type: types.GET_DISCOVERY_MOVIES_SUCCESS,
-        payload: body
-      })
-    } catch (error) {
-      dispatch({
-        type: types.GET_DISCOVERY_MOVIES_FAILS,
-        payload: 'Opps! something went wrong.'
-      })
-    }
+export const addToWatchList = (movie) => {
+  return {
+    type: types.ADD_TO_WATCHLIST,
+    payload: movie
   }
 }
 
-export const getTrendingMovies = () => {
-  return async (dispatch) => {
-    dispatch({
-      type: types.GET_TRENDING_MOVIES
-    })
-    try {
-      const response = await fetch(`${process.env.REACT_APP_MOVIE_DB_URL}trending/movie/week?api_key=${process.env.REACT_APP_MOVIE_DB_KEY}`)
-      const body = await response.json()
-      dispatch({
-        type: types.GET_TRENDING_MOVIES_SUCCESS,
-        payload: body
-      })
-    } catch (error) {
-      dispatch({
-        type: types.GET_TRENDING_MOVIES_SUCCESS,
-        payload: 'Opps! something went wrong.'
-      })
-    }
+export const removeFromWatchList = (movie) => {
+  return {
+    type: types.REMOVE_FROM_WATCHLIST,
+    payload: movie
+  }
+}
+
+export const addToFavorite = (movie) => {
+  return {
+    type: types.ADD_TO_FAVORITE,
+    payload: movie
+  }
+}
+
+export const removeFromFavorite = (movie) => {
+  return {
+    type: types.REMOVE_FROM_FAVORITE,
+    payload: movie
   }
 }

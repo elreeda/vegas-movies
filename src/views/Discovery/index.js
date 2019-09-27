@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 import MoviesList from 'components/MoviesList'
+import LoadingSpinner from 'components/LoadingSpinner'
 
 const Home = () => {
   const [discoveryMovies, setDiscoveryMovies] = useState({
@@ -33,7 +34,7 @@ const Home = () => {
   }, [])
 
   if (discoveryMovies.loading) {
-    return <div>loading...</div>
+    return <LoadingSpinner />
   }
   if (discoveryMovies.error) {
     return 'ops something went wrong'
