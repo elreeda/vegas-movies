@@ -25,7 +25,7 @@ const SearchInput = (props) => {
   useEffect(() => {
     if (query.trim().length) {
       props.history.push('/search?q=' + query)
-    } else {
+    } else if (props.location.pathname === '/search') {
       props.history.push('/')
     }
     /* eslint-disable-next-line */

@@ -9,6 +9,7 @@ import Discovery from 'views/Discovery'
 import WatchList from 'views/WatchList'
 import Favorites from 'views/Favorites'
 import Search from 'views/Search'
+import Movie from 'views/Movie'
 
 const Layout = styled.div`
   max-width: 1340px;
@@ -18,18 +19,19 @@ const Layout = styled.div`
 
 const Routes = () => {
   return (
-    <Router>
-      <Layout>
+    <Layout>
+      <Router>
         <NavBar />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/discovery" component={Discovery} />
-          <Route exact path="/watchlist" component={WatchList} />
-          <Route exact path="/favorites" component={Favorites} />
+          <Route path="/movie/:id" component={Movie} />
+          <Route path="/discovery" component={Discovery} />
+          <Route path="/watchlist" component={WatchList} />
+          <Route path="/favorites" component={Favorites} />
           <Route path="/search" component={Search} />
         </Switch>
-      </Layout>
-    </Router>
+      </Router>
+    </Layout>
   )
 }
 
